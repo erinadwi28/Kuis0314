@@ -38,8 +38,8 @@ public class SharedPref {
         sharedPreferences.edit().putBoolean("isLogin", isCall).apply();
     }
 
-    public void setName(String spNama, String isName){
-        sharedPreferences.edit().putString(SP_NAMA, isName).apply();
+    public void setName(String spName){
+        sharedPreferences.edit().putString(SP_NAMA, spName).apply();
     }
 
     public String getName(){

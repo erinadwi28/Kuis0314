@@ -24,10 +24,12 @@ public class LoginActivity extends AppCompatActivity {
         user = findViewById(R.id.edit_user);
         mBtn_login = findViewById(R.id.btn_login);
         pass = findViewById(R.id.edit_pass);
-        sharedPref = new SharedPref(this);
-
 
         login();
+
+        if(SharedPref.getInstance(LoginActivity.this).isLogin()){
+            startActivity(new Intent(this, HomeActivity.class));
+        }
     }
 
 
@@ -39,10 +41,10 @@ public class LoginActivity extends AppCompatActivity {
                 String e = pass.getText().toString();
                 if (n.equals("admin") && e.equals("admin123")){
                 Toast.makeText(getApplicationContext(), "Success Login", Toast.LENGTH_SHORT).show();
-                sharedPref.setName(SharedPref.SP_NAMA, n);
+                SharedPref.getInstance(LoginActivity.this).setName(n);
+                SharedPref.getInstance(LoginActivity.this).setLogin(true);
 
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 			}else {
 				Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
 			}

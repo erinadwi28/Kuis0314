@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
     Button btnFragmentSatu, btnFragmentDua;
+    TextView txtUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
 
         btnFragmentSatu=findViewById(R.id.btn_home);
         btnFragmentDua=findViewById(R.id.btn_profil);
+        txtUser =findViewById(R.id.txt_user);
 
         btnFragmentSatu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
                 loadFragment(new DuaFragment());
             }
         });
+
+        txtUser.setText(SharedPref.getInstance(HomeActivity.this).getName());
 
     }
 
